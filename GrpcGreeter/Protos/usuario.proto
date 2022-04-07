@@ -1,0 +1,36 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcServer";
+
+package usuario;
+
+service Usuario {
+  rpc GetUsuarioById (UsuarioRequest) returns (UsuarioModel);
+}
+
+message UsuarioRequest {
+  int32 id = 1;
+}
+
+message UsuarioModel {
+  int32 Id = 1;
+  string Nome = 2;
+  string SobreNome = 3;
+  string Email = 4;
+  int32 DDD = 5;
+  double Telefone = 6;
+  string Senha = 7;
+  enum Cargo {
+	Visitante = 0;
+    Membro = 1;
+    Diacono = 2;
+    Obreiro = 3;
+    Secretario = 4;
+    Tesoureiro = 5;
+    Pastor = 6;
+    Administrador = 7;
+  };
+  Cargo cargo = 8;
+  int32 IdUsuarioPermissao = 9;
+  int32 IdUsuarioPermissaoTipoEscala = 10;
+}
